@@ -9,5 +9,5 @@ The developers' &amp; designers' guide to a better future
 - `npm install -g sass`
 _ `sass --watch scss:css` 
 
-- Edit the `style.scss` file and `save`.
+- Edit the `style.scss` file and save it.
 - Open the `index.html` file in your browser to see your updates. 
