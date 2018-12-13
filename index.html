@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<head>
+  <meta name="viewport" content= "width = device-width">
+  <meta name="Content-Type" content="text/html; charset=utf-8">
+  <title>El Guide</title>
+  <meta name="Description" content="the guide to build the future">
+  <link rel="stylesheet" type="text/css" href="styles/css/style.css">
+</head>
+<body>
+<header>
+  <div class="limit">
+    <span id="breakpoint"></span>
+    <span id="window-size"></span>
+  </div>
+</header>
+    <div class="content limit">  
+        <div class="fonts container">
+          <h1>Fonts</h1>
+          <hr>
+          <div class="flex-grid">
+            <div class="main-title" onclick="revealFont(this)">
+              <div class="title-content">
+                <h2>Main Title</h2>
+                <span class="button">+</span>
+              </div>
+              <div class="font-style">
+                <b>Header 2</b> <br>
+                font-family: <span class="font-family"></span>"Montserrat"</span><br>
+                font-size: <span class="font-size"></span><br>
+                line-height: <span class="line-height"></span><br>
+                letter-spacing: <span class="letter-spacing"></span><br>
+                color: <span class="color"></span>
+              </div>
+            </div>
+            <div class="sub-title" onclick="revealFont(this)">
+              <div class="title-content">
+                <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+                <span class="button">+</span>
+              </div>
+              <div class="font-style">
+                <b>Header 3</b> <br>
+                font-family: <span class="font-family">"Roboto"</span><br>
+                font-size: <span class="font-size"></span><br>
+                line-height: <span class="line-height"></span><br>
+                letter-spacing: <span class="letter-spacing"></span><br>
+                color: <span class="color"></span>
+              </div>
+            </div>
+          </div>
+            <div class="paragraph" onclick="revealFont(this)">
+              <div class="title-content">
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+                eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+                voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+                <span class="button">+</span>
+              </div>
+              <div class="font-style">
+                <b>Paragraph</b> <br>
+                font-family: <span class="font-family">"Roboto Slab"</span><br>
+                font-size: <span class="font-size"></span><br>
+                line-height: <span class="line-height"></span><br>
+                letter-spacing: <span class="letter-spacing"></span><br>
+                color: <span class="color"></span>
+              </div>
+            </div>
+        </div>
+
+        <div class="ratios container">
+          <h1>Ratios</h1>
+          <hr>
+          <div class="image-grid">
+            <img class="large" src="https://via.placeholder.com/640x360/f6f6f6?text=16:9"/>
+            <img class="small" id="first" src="https://via.placeholder.com/640x480/f6f6f6?text=4:3"/>
+            <img class="small" id="last" src="https://via.placeholder.com/640x480/f6f6f6?text=4:3"/>
+          </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+
+const mainTitleFont = document.querySelector(".main-title").querySelector(".font-style");
+const subTitleFont = document.querySelector(".sub-title").querySelector(".font-style");
+const paragraphFont = document.querySelector(".paragraph").querySelector(".font-style");
+
+  window.addEventListener('load',() =>{
+    getScreenSize();
+  })
+
+  window.addEventListener('resize', () => { 
+    getScreenSize(); 
+  })
+
+  getScreenSize = ()=> {
+    var w = window, d = document, e = d.documentElement, g = d.getElementsByTagName('body')[0], x = w.innerWidth || e.clientWidth || g.clientWidth, y = w.innerHeight || e.clientHeight || g.clientHeight;
+    document.getElementById("window-size").innerHTML = x + "px × " + y + "px";
+    getBreakpoint(x,y);
+  }
+
+  getBreakpoint = (x,y) => {
+    var breakpoint;
+    
+    breakpoint = x < 768 ?  (y < 500 ? "Mobile Landscape" : "Mobile Portrait") : x < 1024 ? (y < 500 ? "Mobile Landscape" : "Tablet Portrait") : x < 1440 ? "Desktop" : "Desktop HD"
+    document.getElementById("breakpoint").innerHTML = breakpoint;
+
+    updateImages(breakpoint);
+    updateFonts(breakpoint);
+  }
+
+  updateImages = (bp) => {
+    var large;
+    var small;
+    if(bp.includes("Mobile")){
+      large ="https://via.placeholder.com/720x1080/f6f6f6?text=9:16"
+      small ="https://via.placeholder.com/720x540/f6f6f6?text=4:3"
+    } else {
+      if(bp.includes("Tablet")){
+        large ="https://via.placeholder.com/1080x720/f6f6f6?text=16:9"
+        small ="https://via.placeholder.com/640x480/f6f6f6?text=4:3"
+      }else{
+        large ="https://via.placeholder.com/1440x810/f6f6f6?text=16:9"
+        small ="https://via.placeholder.com/720x540/f6f6f6?text=4:3"
+      }
+    }
+    document.querySelector(".large").src = large;
+    document.querySelectorAll(".small").forEach(el => {
+      el.src = small;
+    });
+  }
+
+  updateFonts = (bp) => {
+    console.log(mainTitleFont);
+    if (bp.includes("Mobile")) {
+      mainTitleFont.querySelector(".font-size").innerHTML = "42px";
+      mainTitleFont.querySelector(".line-height").innerHTML = "44px";
+      mainTitleFont.querySelector(".letter-spacing").innerHTML = "1px";
+      mainTitleFont.querySelector(".color").innerHTML = "#3e3e3e";
+
+      subTitleFont.querySelector(".font-size").innerHTML = "28px";
+      subTitleFont.querySelector(".line-height").innerHTML = "31px";
+      subTitleFont.querySelector(".letter-spacing").innerHTML = "1px";
+      subTitleFont.querySelector(".color").innerHTML = "#3e3e3e";
+
+      paragraphFont.querySelector(".font-size").innerHTML = "13px";
+      paragraphFont.querySelector(".line-height").innerHTML = "18px";
+      paragraphFont.querySelector(".letter-spacing").innerHTML = "0.3px";
+      paragraphFont.querySelector(".color").innerHTML = "#3e3e3e";
+    }
+    else if(bp.includes("HD")){
+      mainTitleFont.querySelector(".font-size").innerHTML = "46px";
+      mainTitleFont.querySelector(".line-height").innerHTML = "51px";
+      mainTitleFont.querySelector(".letter-spacing").innerHTML = "1.3px";
+      mainTitleFont.querySelector(".color").innerHTML = "#3e3e3e";
+
+      subTitleFont.querySelector(".font-size").innerHTML = "28px";
+      subTitleFont.querySelector(".line-height").innerHTML = "33px";
+      subTitleFont.querySelector(".letter-spacing").innerHTML = "1px";
+      subTitleFont.querySelector(".color").innerHTML = "#3e3e3e";
+
+      paragraphFont.querySelector(".font-size").innerHTML = "17px";
+      paragraphFont.querySelector(".line-height").innerHTML = "22px";
+      paragraphFont.querySelector(".letter-spacing").innerHTML = "0.5px";
+      paragraphFont.querySelector(".color").innerHTML = "#a7a3a3";
+    } 
+    else {
+      mainTitleFont.querySelector(".font-size").innerHTML = "44px";
+      mainTitleFont.querySelector(".line-height").innerHTML = "46px";
+      mainTitleFont.querySelector(".letter-spacing").innerHTML = "1.2px";
+      mainTitleFont.querySelector(".color").innerHTML = "#3e3e3e";
+
+      subTitleFont.querySelector(".font-size").innerHTML = "23px";
+      subTitleFont.querySelector(".line-height").innerHTML = "28px";
+      subTitleFont.querySelector(".letter-spacing").innerHTML = "1px";
+      subTitleFont.querySelector(".color").innerHTML = "#3e3e3e";
+
+      paragraphFont.querySelector(".font-size").innerHTML = "15px";
+      paragraphFont.querySelector(".line-height").innerHTML = "20px";
+      paragraphFont.querySelector(".letter-spacing").innerHTML = "0.3px";
+      paragraphFont.querySelector(".color").innerHTML = "#a7a3a3";
+    } 
+  }
+
+  revealFont = (el) => {
+    const button = el.getElementsByTagName("span")[0];  
+    el.classList.contains("open") ? el.classList.remove("open")  : el.classList.add("open");
+    el.classList.contains("open") ? button.innerHTML = "-" : button.innerHTML = "+";
+  }
+
+</script>
+</html>

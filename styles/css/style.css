@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600|Roboto:200,300,400,700|Roboto+Slab:100,300,400,700");
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: white;
+  color: #3e3e3e;
+}
+
+body, h1, h2, h3, p, span {
+  margin: 0;
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 200;
+  line-height: 26px;
+  letter-spacing: 1px;
+  padding: 10px 0;
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 44px;
+  letter-spacing: 1px;
+}
+
+h3 {
+  font-family: "Roboto", sans-serif;
+  font-size: 28px;
+  font-weight: 200;
+  line-height: 31px;
+  letter-spacing: 1px;
+}
+
+p {
+  font-family: "Roboto Slab", serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 18px;
+  letter-spacing: 0.3px;
+}
+
+.button {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+}
+
+hr {
+  margin-bottom: 30px;
+  border: 0px;
+  height: 1px;
+}
+
+header {
+  background-color: white;
+  padding: 20px 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 4px 5px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.08);
+  z-index: 1;
+}
+header #breakpoint {
+  color: #656464;
+  font-weight: 500;
+  padding-left: 20px;
+}
+header #window-size {
+  color: #9c9b9b;
+  float: right;
+  padding-right: 20px;
+  font-weight: 200;
+}
+
+.content {
+  margin-top: 61px;
+}
+.content .container {
+  padding: 20px;
+}
+.content .container h1 {
+  color: mediumspringgreen;
+}
+.content .container hr {
+  background-color: mediumspringgreen;
+}
+.content .container .main-title, .content .container .sub-title, .content .container .paragraph {
+  display: table;
+  cursor: pointer;
+}
+.content .container .main-title .title-content, .content .container .sub-title .title-content, .content .container .paragraph .title-content {
+  display: table;
+}
+.content .container .main-title .button, .content .container .sub-title .button, .content .container .paragraph .button {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 10px;
+  width: 20px;
+  text-align: right;
+  color: mediumslateblue;
+}
+.content .container .main-title .font-style, .content .container .sub-title .font-style, .content .container .paragraph .font-style {
+  display: block;
+  z-index: -1;
+  position: absolute;
+  padding: 10px 0;
+  opacity: 0;
+  transition: opacity 0s;
+  will-change: opacity;
+  color: mediumslateblue;
+  font-weight: 100;
+  letter-spacing: 0.5px;
+  font-size: 15px;
+  line-height: 22px;
+}
+.content .container .main-title .font-style b, .content .container .sub-title .font-style b, .content .container .paragraph .font-style b {
+  line-height: 30px;
+  font-weight: 500;
+}
+.content .container .main-title.open, .content .container .sub-title.open, .content .container .paragraph.open {
+  animation: openAnim 0.2s ease-in-out forwards;
+}
+.content .container .main-title.open .font-style, .content .container .sub-title.open .font-style, .content .container .paragraph.open .font-style {
+  opacity: 1;
+  transition: opacity 0.2s ease-in 0.1s;
+}
+@keyframes openAnim {
+  100% {
+    padding-bottom: 170px;
+  }
+}
+.content .container .main-title {
+  padding-bottom: 10px;
+}
+.content .container .paragraph {
+  padding: 50px 0;
+}
+.content .ratios .image-grid {
+  padding: 10px 0;
+}
+.content .ratios .large, .content .ratios .small {
+  display: block;
+  width: 100%;
+  margin: 20px auto;
+}
+
+/* TABLET */
+@media only screen and (min-width: 768px) {
+  h2 {
+    font-size: 44px;
+    line-height: 46px;
+    letter-spacing: 1.2px;
+  }
+
+  h3 {
+    font-size: 23px;
+    line-height: 28px;
+    letter-spacing: 1px;
+  }
+
+  p {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 20px;
+    color: #a7a3a3;
+  }
+
+  .content .container .sub-title, .content .container .main-title {
+    max-width: 70%;
+  }
+  .content .container .main-title {
+    padding-bottom: 5px;
+  }
+  .content .container .paragraph {
+    padding: 30px 0;
+  }
+  .content .ratios .image-grid {
+    padding: 0;
+  }
+  .content .ratios .small {
+    width: calc(50% - 10px);
+    margin: 0;
+    float: left;
+  }
+  .content .ratios .small#first {
+    margin-right: 10px;
+  }
+  .content .ratios .small#last {
+    margin-left: 10px;
+  }
+}
+/* DESKTOP */
+@media only screen and (min-width: 1024px) {
+  header {
+    padding: 30px 0;
+  }
+  header #breakpoint {
+    padding-left: 50px;
+  }
+  header #window-size {
+    padding-right: 50px;
+  }
+
+  .content {
+    margin-top: 81px;
+  }
+  .content .container {
+    padding: 25px 50px;
+  }
+  .content .container .flex-grid {
+    display: flex;
+  }
+  .content .container .main-title {
+    width: 30%;
+  }
+  .content .container .sub-title {
+    margin-top: 18px;
+    width: 70%;
+  }
+  .content .container .paragraph {
+    width: 70%;
+    margin-left: 30%;
+    padding: 10px 0;
+  }
+  .content .ratios .large, .content .ratios .small {
+    margin: 20px 0;
+  }
+  .content .ratios .small {
+    width: calc(50% - 20px);
+  }
+  .content .ratios .small#first {
+    margin-right: 20px;
+  }
+  .content .ratios .small#last {
+    margin-left: 20px;
+  }
+
+  hr {
+    margin-bottom: 50px;
+  }
+}
+/* DESKTOP HD */
+@media only screen and (min-width: 1440px) {
+  .limit {
+    max-width: 1440px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  h2 {
+    font-size: 46px;
+    line-height: 51px;
+    letter-spacing: 1.3px;
+  }
+
+  h3 {
+    font-size: 28px;
+    line-height: 33px;
+    letter-spacing: 1px;
+  }
+
+  p {
+    font-size: 17px;
+    line-height: 22px;
+    letter-spacing: 0.5px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
